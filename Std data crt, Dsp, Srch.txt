@@ -1,0 +1,34 @@
+Implement Student Database Management using an array of structures with operations:
+Create, Display, and Search.
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int roll;
+    char name[50];
+};
+
+int main() {
+    struct Student s[2];
+    int searchRoll, i;
+
+    for (i = 0; i < 2; i++) {
+        printf("Enter roll and name: ");
+        scanf("%d %s", &s[i].roll, s[i].name);
+    }
+
+    printf("\nStudent List:\n");
+    for (i = 0; i < 2; i++)
+        printf("%d %s\n", s[i].roll, s[i].name);
+
+    printf("\nEnter roll to search: ");
+    scanf("%d", &searchRoll);
+    for (i = 0; i < 2; i++) {
+        if (s[i].roll == searchRoll) {
+            printf("Found: %d %s\n", s[i].roll, s[i].name);
+            break;
+        }
+    }
+
+    return 0;
+}

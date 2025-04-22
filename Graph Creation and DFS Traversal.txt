@@ -1,0 +1,46 @@
+Graph Creation and DFS Traversal
+#include <stdio.h>
+
+#define SIZE 10
+
+int graph[SIZE][SIZE];  // Adjacency matrix
+int visited[SIZE];      // Visited array
+
+// DFS traversal function
+void dfs(int node, int vertices) {
+    printf("%d ", node);
+    visited[node] = 1;
+
+    for (int i = 0; i < vertices; i++) {
+        if (graph[node][i] == 1 && !visited[i]) {
+            dfs(i, vertices);
+        }
+    }
+}
+
+int main() {
+    int vertices, edges, u, v, start;
+
+    printf("Enter number of vertices: ");
+    scanf("%d", &vertices);
+
+    printf("Enter number of edges: ");
+    scanf("%d", &edges);
+
+    // Input edges
+    for (int i = 0; i < edges; i++) {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+        graph[u][v] = 1;
+        graph[v][u] = 1;  // For undirected graph
+    }
+
+    printf("Enter starting vertex for DFS: ");
+    scanf("%d", &start);
+
+    printf("DFS Traversal: ");
+    dfs(start, vertices);
+    printf("\n");
+
+    return 0;
+}
